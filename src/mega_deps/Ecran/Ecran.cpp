@@ -1,10 +1,11 @@
 // ********************************************************** écran ******************************************************
 #include "Ecran.h"
-#include "Variables.h"
-#include "Utils.h"
-#include "InfraRouge.h"
-#include "Vrac.h"
-#include "Serie.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/Utils/Utils.h"
+#include "mega_deps/InfraRouge/InfraRouge.h"
+#include "mega_deps/Vrac/Vrac.h"
+#include "mega_deps/Serie/Serie.h"
+#include "Temps.h"
 
 // permet de créer une chaine de caractère retourne "" si pas de chaine créée, ou la chaine sinon
 String creationChaine(int nbMaxChar){

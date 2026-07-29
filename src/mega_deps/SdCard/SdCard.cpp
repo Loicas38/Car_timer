@@ -4,22 +4,22 @@
 #include <SD.h>
 #include "SdCard.h"
 #include <ArduinoJson.h>
-#include "Variables.h"
-#include "Vrac.h"
-#include "Ecran.h"
-#include "Utils.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/Vrac/Vrac.h"
+#include "mega_deps/Ecran/Ecran.h"
+#include "mega_deps/Utils/Utils.h"
 
 // initialise la connexion à la carte sd
 void initialisationCarteSd(){
   // cas où la carte sd ne fonctionne pas
   if(!SD.begin(chipSelectPin)) {
     carteSd = false;
-    Serial.println("echec connexion carte sd");
+    Serial.println("Failed to connect to the SD card.");
     return;
   }
 
   carteSd = true;
-  Serial.println("connexion carte sd réussie");
+  Serial.println("Successfully connected to the SD card.");
 }
 
 

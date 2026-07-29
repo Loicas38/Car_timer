@@ -3,11 +3,11 @@
 #include <LiquidCrystal.h>
 #define USE_IRREMOTE_HPP_AS_PLAIN_INCLUDE
 #include <IRremote.hpp>
-#include "Utils.h"
-#include "Variables.h"
-#include "InfraRouge.h"
-#include "Serie.h"
-#include "Ecran.h"
+#include "mega_deps/Utils/Utils.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/InfraRouge/InfraRouge.h"
+#include "mega_deps/Serie/Serie.h"
+#include "mega_deps/Ecran/Ecran.h"
 
 // permet de choisir le nombre de checkpoints utilisés
 void choixNbCheckpoints(){

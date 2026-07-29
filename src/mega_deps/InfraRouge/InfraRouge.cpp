@@ -4,9 +4,9 @@
 #define USE_IRREMOTE_HPP_AS_PLAIN_INCLUDE
 #include <IRremote.hpp>
 #include <LiquidCrystal.h>
-#include "Distance.h"
+#include "mega_deps/Distance/Distance.h"
 #include "InfraRouge.h"
-#include "Variables.h"
+#include "mega_deps/Variables/Variables.h"
 
 
 // retourne le code associé à la touche

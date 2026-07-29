@@ -40,7 +40,7 @@ void setup() {
   delay(100);
   digitalWrite(resetPin, HIGH);
 
-  delay(1000);
+  delay(3000);
 
   // communication avec l'ordi
   Serial.begin(115200);
@@ -53,8 +53,8 @@ void setup() {
   pinMode(sendPinDist, OUTPUT);
   pinMode(recievePinDist, INPUT);
 
+  // begins the connection to the SD card (allows also to know if it works or not)
   initialisationCarteSd();
-
 
   // initialise en permettant de choisir des configs pré enregistrées ou de saisir les infos
   Team* team = configOuManuel();

@@ -1,38 +1,18 @@
 // ************************************************  about time calcul ******************************************************************
 #include "Vrac.h"
-#include "Variables.h"
-#include "Utils.h"
-#include "Distance.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/Utils/Utils.h"
+#include "mega_deps/Distance/Distance.h"
 #define USE_IRREMOTE_HPP_AS_PLAIN_INCLUDE
 #include <IRremote.hpp>
-#include "InfraRouge.h"
-#include "Serie.h"
-#include "Checkpoint.h"
-#include "Ecran.h"
-#include "SdCard.h"
-#include "Team.hpp"
-#include "Player.hpp"
-
-
-// affiche le meilleur temps sur l'écran
-void printBest(int col, int ligne, Team* team){
-  printTime(col, ligne, team->get_best_time());
-}
-
-// affiche le temps donné ou souhaité sur l'écran 
-void printTime(int col, int ligne, uint32_t temps){
-  lcd.setCursor(col, ligne);
-
-  if (temps >= 60000){
-    lcd.print(calculMinutes(temps));
-    lcd.print("m");
-  }
-
-  lcd.print(calculSecondes(temps));
-  lcd.print("s");
-  lcd.print(calculMilli(temps));
-  lcd.print("ms");
-}
+#include "mega_deps/InfraRouge/InfraRouge.h"
+#include "mega_deps/Serie/Serie.h"
+#include "mega_deps/Checkpoint/Checkpoint.h"
+#include "mega_deps/Ecran/Ecran.h"
+#include "mega_deps/SdCard/SdCard.h"
+#include "mega_deps/Joueurs/Team.hpp"
+#include "mega_deps/Joueurs/Player.hpp"
+#include "mega_deps/Ecran/Temps.h"
 
 
 // ************************************************** about chrono  *****************************************************************************

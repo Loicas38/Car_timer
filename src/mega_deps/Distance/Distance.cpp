@@ -5,9 +5,9 @@
 #include <LiquidCrystal.h>
 #define USE_IRREMOTE_HPP_AS_PLAIN_INCLUDE
 #include <IRremote.hpp>
-#include "Variables.h"
-#include "Utils.h"
-#include "InfraRouge.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/Utils/Utils.h"
+#include "mega_deps/InfraRouge/InfraRouge.h"
 
 // mesure la distance une seule fois et renvoie la mesure
 float mesureDistance(){

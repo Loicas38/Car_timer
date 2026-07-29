@@ -1,11 +1,12 @@
 #include "Temps.h"
 #include <Arduino.h>
 #include "Ecran.h"
-#include "Vrac.h"
-#include "InfraRouge.h"
-#include "Variables.h"
-#include "Team.hpp"
-#include "Player.hpp"
+#include "mega_deps/Vrac/Vrac.h"
+#include "mega_deps/InfraRouge/InfraRouge.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/Joueurs/Team.hpp"
+#include "mega_deps/Joueurs/Player.hpp"
+#include "mega_deps/Utils/Utils.h"
 
 
 // permet l'affichage des temps des joueurs, de leurs bests et tout avec navigation
@@ -89,3 +90,23 @@ void displayBestPlayer(Team* team){
   lcd.print(bestTimeStr);
 }
 
+
+// affiche le meilleur temps sur l'écran
+void printBest(int col, int ligne, Team* team){
+  printTime(col, ligne, team->get_best_time());
+}
+
+// affiche le temps donné ou souhaité sur l'écran 
+void printTime(int col, int ligne, uint32_t temps){
+  lcd.setCursor(col, ligne);
+
+  if (temps >= 60000){
+    lcd.print(calculMinutes(temps));
+    lcd.print("m");
+  }
+
+  lcd.print(calculSecondes(temps));
+  lcd.print("s");
+  lcd.print(calculMilli(temps));
+  lcd.print("ms");
+}

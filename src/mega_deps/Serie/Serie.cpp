@@ -2,9 +2,9 @@
 
 #include "Serie.h"
 #include <Arduino.h>
-#include "Checkpoint.h"
-#include "Variables.h"
-#include "Vrac.h"
+#include "mega_deps/Checkpoint/Checkpoint.h"
+#include "mega_deps/Variables/Variables.h"
+#include "mega_deps/Vrac/Vrac.h"
 
 // effectue l'acion appropriée en fonction de la requête reçue
 void gestionRequetes(String request, int id, Player* player){

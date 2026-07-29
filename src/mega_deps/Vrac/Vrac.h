@@ -6,8 +6,6 @@
 #include <SD.h>
 #include "mega_deps/Joueurs/Team.hpp"
 
-void printBest(int col, int ligne, Team* team);
-void printTime(int col, int ligne, uint32_t temps);
 bool waitDebutChrono(Team* team);
 void displayPreviousTime(int col, int ligne, Player* player);
 void checkCheckpoint(int checkpointRecu, Player* player);
