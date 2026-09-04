@@ -2,10 +2,11 @@
 
 #include "Serie.h"
 #include <Arduino.h>
-#include "mega_deps/Checkpoint/Checkpoint.h"
+//#include "mega_deps/Checkpoint/Checkpoint.h"
 #include "mega_deps/Variables/Variables.h"
 #include "mega_deps/Vrac/Vrac.h"
 
+/*
 // effectue l'acion appropriée en fonction de la requête reçue
 void gestionRequetes(String request, int id, Player* player){
   Serial.print("requete: "); Serial.println(request);
@@ -29,7 +30,7 @@ void gestionRequetes(String request, int id, Player* player){
     ajoutIdListeIdsOff(id);
   }
 }
-
+*/
 
 // receives Serial messages
 // the message must be after the character which is given 
@@ -161,6 +162,6 @@ void gereReceptionMessages(Player* player){
 
   // on ne transmet le message au checkpoint que s'il y a une requête, inutile de juste lui envoyer son id
   if(request.length() > 0 && id != -1){
-    gestionRequetes(request, id, player);
+    //gestionRequetes(request, id, player);
   }
 }

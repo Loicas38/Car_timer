@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "Times.hpp"
+#include "mega_deps/Ecran/Screen.hpp"
 
 class Player {
     private :
@@ -29,6 +30,7 @@ class Player {
         uint32_t get_last_time() const;
         uint16_t get_last_time_seconds() const;
         uint16_t get_last_time_minutes() const;
+        void display_last_time(Screen* screen);
 
         uint8_t get_nb_times_saved() const;
 

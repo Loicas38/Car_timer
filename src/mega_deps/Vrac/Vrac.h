@@ -6,6 +6,7 @@
 #include <SD.h>
 #include "mega_deps/Joueurs/Team.hpp"
 
+/*
 bool waitDebutChrono(Team* team);
 void displayPreviousTime(int col, int ligne, Player* player);
 void checkCheckpoint(int checkpointRecu, Player* player);
@@ -23,5 +24,5 @@ void verifReglagesConfig(Team* team);
 Team* afficheEtChargeConfigs();
 Team* choixConfigOuReglagesManuels();
 Team* configOuManuel();
-
+*/
 #endif

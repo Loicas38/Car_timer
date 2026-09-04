@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "Player.hpp"
+#include "mega_deps/Ecran/Screen.hpp"
 
 struct team_data {
     Player player;
@@ -23,7 +24,7 @@ class Team {
         
     public :
         // constructeur 
-        Team();
+        Team(Screen* screen);
         // Surcharge pour initialisation à la création 
         ~Team();
 
@@ -52,6 +53,9 @@ class Team {
         Player* getPlayerById(uint8_t player_id) const;
 
         void display_data() const;
+        void display_last_time(Screen* screen);
+
+        void save_active_player_time(uint32_t t);
 };
 
 #endif

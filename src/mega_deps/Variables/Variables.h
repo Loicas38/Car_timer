@@ -9,13 +9,6 @@ extern const char touches_lst[NB_TOUCHES][8] ;
 
 
 // *********************************************** PINS ***************************************************
-// initialisation écran 
-const int rs = 41, en = 43, d4 = 47, d5 = 49, d6 = 40, d7 = 45;
-extern LiquidCrystal lcd;
-
-// broche qui envoie et reçoit au module ultra sons
-const int sendPinDist = 44;
-const int recievePinDist = 46;
 
 // broche où est conecté le pin reset de l'esp
 const int resetPin = 38;
@@ -44,31 +37,9 @@ extern int distanceDeclenchement;
 extern unsigned long tempsDebut, tempsTotal, bestTime;
 extern unsigned long tempsMinimum;
 
-const int nbMaxUtilisateurs = 10;
-// liste des utilisateurs habituels
-extern String utilisateurs[nbMaxUtilisateurs];
-// nombre d'utilisateurs enregistrés
-extern int nbUtilisateurs;
-
-
 // port du buzzer
 
 extern bool jouerSon;
-
-// nombre total de checkpoints
-// -1 sert à savoir si une valeur a été assignée plus tard dans le programme
-extern int nbCheckpoints;
-// nombre de checkpoints que la voiture a déjà passés
-extern int nbCheckpointsValides;
-// nombre max de checkpoint 
-const int nbMaxCheckpoints = 10;
-// ordre des checkpoints
-extern int ordreCheckpoints[nbMaxCheckpoints];
-
-// enregistre les checkpoints connectés mais non utilisés
-extern int nbCheckpointsOff;
-const int nbMaxCheckpointsOff = 10;
-extern int checkpointsOff[nbMaxCheckpointsOff];
 
 // permet de jouer en continu quand on est en solo, le chrono s'arrête et se redélenche tout seul
 extern bool autoPlaySolo;

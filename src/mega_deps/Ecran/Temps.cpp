@@ -1,6 +1,5 @@
 #include "Temps.h"
 #include <Arduino.h>
-#include "Ecran.h"
 #include "mega_deps/Vrac/Vrac.h"
 #include "mega_deps/InfraRouge/InfraRouge.h"
 #include "mega_deps/Variables/Variables.h"
@@ -9,6 +8,7 @@
 #include "mega_deps/Utils/Utils.h"
 
 
+/*
 // permet l'affichage des temps des joueurs, de leurs bests et tout avec navigation
 // grâce aux flèches de la télécommande 
 bool afficheTemps(Team* team){
@@ -109,4 +109,4 @@ void printTime(int col, int ligne, uint32_t temps){
   lcd.print("s");
   lcd.print(calculMilli(temps));
   lcd.print("ms");
-}
+}*/

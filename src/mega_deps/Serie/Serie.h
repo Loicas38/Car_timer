@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "mega_deps/Joueurs/Player.hpp"
 
-void gestionRequetes(String request, int id, Player* player);
+//void gestionRequetes(String request, int id, Player* player);
 String receptionSerie(char caractere);
 String receptionCommande();
 String receptionId();

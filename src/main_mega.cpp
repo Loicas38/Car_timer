@@ -15,11 +15,11 @@
 // pour l'enregistrement des temps en json
 #include <ArduinoJson.h>
 
-#include "mega_deps/Checkpoint/Checkpoint.h"
+#include "mega_deps/Checkpoint/Checkpoints.hpp"
 #include "mega_deps/Variables/Variables.h"
 #include "mega_deps/Utils/Utils.h"
 #include "mega_deps/Distance/Distance.h"
-#include "mega_deps/Ecran/Ecran.h"
+#include "mega_deps/Ecran/Screen.hpp"
 #include "mega_deps/InfraRouge/InfraRouge.h"
 #include "mega_deps/SdCard/SdCard.h"
 #include "mega_deps/Serie/Serie.h"
@@ -44,7 +44,7 @@ void setup() {
 
   // communication avec l'ordi
   Serial.begin(115200);
-  lcd.begin(16, 2);
+  Serial2.begin(115200);
 
   // initialisation récepteur infrarouge
   IrReceiver.begin(11, ENABLE_LED_FEEDBACK);
@@ -56,8 +56,11 @@ void setup() {
   // begins the connection to the SD card (allows also to know if it works or not)
   initialisationCarteSd();
 
+
+  Screen* screen = new Screen;
   // initialise en permettant de choisir des configs pré enregistrées ou de saisir les infos
   Team* team = configOuManuel();
+  Checkpoints* checkpoints = new Checkpoints(screen);
 
   team->display_data();
 
@@ -72,18 +75,11 @@ void setup() {
   // permet de choisir qui va jouer et de lancer la partie
   // <- et -> pour changer de joueur, start pour lancer
   while(strcmp(touche, "start") != 0){
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print((char)255);
-    lcd.print(" ");
-    lcd.print(team->getActivePlayer()->get_name());
+    screen->display((char)255 + " " + team->getActivePlayer()->get_name() + "play:press start");
 
-    lcd.setCursor(0, 1);
-    lcd.print("play:press start");
-
-    const char* toucheTemp = waitAndGetTouche();
+    int toucheTemp = waitAndGetTouche();
     // on assigne comme ça parce que sinon ca marche pas (vrmt bancale ce langage)
-    strcpy(touche, toucheTemp);
+    strcpy(touche, touches_lst[toucheTemp]);
 
     // fonction supprimée, voir quoi faire 
     // choixJoueurActif(touche);
@@ -102,9 +98,7 @@ void setup() {
 void loop() {
   Team* team = t;
 
-  nbCheckpointsValides = 0;
   bool reglages = false;
-
 
   // si on est dans le mode relancer le jeu automatiquement, on a pas besoin d'attendre le passage de la voiture
   if(!autoPlaySolo){
@@ -137,7 +131,7 @@ void loop() {
   
   
   // signale la fin de la partie et permet de rallumer les leds de tout les checkpoints
-  envoieMessage("!debut partie", 0);
+  Serial2.print("!debut partie", 0);
   
 
   // si le joueur est en mode solo en continue, pas d'affichage ni de changement de joueur, on enregistre le temps s'il bat et on relance

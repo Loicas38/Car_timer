@@ -2,14 +2,10 @@
 #include "Vrac.h"
 #include "mega_deps/Variables/Variables.h"
 #include "mega_deps/Utils/Utils.h"
-#include "mega_deps/Distance/Distance.h"
 #define USE_IRREMOTE_HPP_AS_PLAIN_INCLUDE
 #include <IRremote.hpp>
 #include "mega_deps/InfraRouge/InfraRouge.h"
 #include "mega_deps/Serie/Serie.h"
-#include "mega_deps/Checkpoint/Checkpoint.h"
-#include "mega_deps/Ecran/Ecran.h"
-#include "mega_deps/SdCard/SdCard.h"
 #include "mega_deps/Joueurs/Team.hpp"
 #include "mega_deps/Joueurs/Player.hpp"
 #include "mega_deps/Ecran/Temps.h"
@@ -17,7 +13,7 @@
 
 // ************************************************** about chrono  *****************************************************************************
 
-
+/*
 // attend pour lancer le chrono
 // retourne true si l'utilisateur veut aller dans les paramètres
 bool waitDebutChrono(Team* team){
@@ -77,6 +73,7 @@ bool waitDebutChrono(Team* team){
 void displayPreviousTime(int col, int ligne, Player* player){
   printTime(col, ligne, player->get_last_time());
 }
+
 
 // vérifie que le checkpoint pass en paramètre est bien le suivant
 void checkCheckpoint(int checkpointRecu, Player* player){
@@ -845,7 +842,7 @@ Team* configOuManuel(){
   return team;
 }
 
-
+*/
 /*
 void choixJoueurActif(char* touchePressee, Team* team){
   if(strcmp(touchePressee, "droite") == 0){

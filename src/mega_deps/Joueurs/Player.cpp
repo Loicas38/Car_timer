@@ -122,3 +122,21 @@ uint32_t Player::get_time_checkpoint(uint8_t checkpoint_id) const{
 
     return m_checkpoint_times[checkpoint_id].minimum_time();
 }
+
+void Player::display_last_time(Screen* screen){
+    int mins = get_last_time_minutes();
+    int secs = get_last_time_seconds() - mins * 60 ;
+    int milli = get_last_time() - get_last_time_seconds() * 10;
+    
+    String t;
+
+    if(mins > 0){
+        t = String(mins) + "m" + String(secs) + "." + String(milli);
+    } else {
+        t = String(secs) + "." + String(milli);
+    }
+
+    if (get_last_time() == getBestTime()){
+        screen->flashing_display("New ps record !", t, 3);
+    }
+}

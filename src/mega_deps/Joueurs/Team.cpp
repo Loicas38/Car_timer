@@ -1,8 +1,27 @@
 #include "Team.hpp"
 
-Team::Team() : m_players(NULL), m_nb_players(0), m_id_active_player(0), m_max_id_player(0), m_nb_max_players(10), m_nb_checkpoints(0)
+Team::Team(Screen* screen) : m_nb_max_players(10), m_nb_checkpoints(0)
 {
+    m_nb_players = 0;
+    m_id_active_player = 0;
+    m_max_id_player = 0;
+    m_players = NULL;
 
+    while(true){
+        String n = screen->build_string("Player " + String(m_nb_players + 1) + " name");
+        if (n.length() == 0 && m_nb_players > 0){
+            break;
+        } else if (n.length() > 0){
+            add_player(n);
+        }
+    }
+
+    /*Serial.println("Into team init");
+    //screen->display("The choice of the players has not been implemented yet.", "");
+    Serial.println("Adding two default players");
+    m_players = NULL;
+    add_player("Lucas");
+    add_player("Alice");*/
 }
 
 
@@ -236,4 +255,31 @@ void Team::display_data() const {
     Serial.println(m_nb_checkpoints);
 
     Serial.println("End of team data\n\n");
+}
+
+void Team::save_active_player_time(uint32_t t){
+    getActivePlayer()->add_new_time(t);
+}
+
+
+void Team::display_last_time(Screen* screen){
+    int mins = getActivePlayer()->get_last_time_minutes();
+    int secs = getActivePlayer()->get_last_time_seconds() - mins * 60 ;
+    int milli = getActivePlayer()->get_last_time() - getActivePlayer()->get_last_time_seconds() * 1000;
+    
+    String t;
+
+    if(mins > 0){
+        t = String(mins) + "m" + String(secs) + "." + String(milli);
+    } else {
+        t = String(secs) + "." + String(milli);
+    }
+
+    if (getActivePlayer()->get_last_time() == get_best_time()){
+        screen->flashing_display("New gl record !", t, 3000);
+    } else if (getActivePlayer()->get_last_time() == getActivePlayer()->getBestTime()) {
+        screen->flashing_display("New ps record !", t, 3000);
+    } else {
+        screen->display("Your time :", t, 3000);
+    }
 }
